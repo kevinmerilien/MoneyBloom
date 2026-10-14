@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoneyBloom</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Personal finance dashboard</p>
+          <h1>MoneyBloom</h1>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="stats-grid" aria-label="Budget summary">
+          <article class="stat-card accent-emerald">
+            <p class="label">Monthly budget</p>
+            <h2 id="budget-total">$0.00</h2>
+          </article>
+
+          <article class="stat-card accent-charcoal">
+            <p class="label">Total expenses</p>
+            <h2 id="expense-total">$0.00</h2>
+          </article>
+
+          <article class="stat-card accent-green">
+            <p class="label">Remaining balance</p>
+            <h2 id="remaining-total">$0.00</h2>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel left-panel">
+            <div class="panel-section">
+              <h3>Set monthly budget</h3>
+              <form id="budget-form" class="stacked-form">
+                <label for="budget-input">Budget amount</label>
+                <div class="input-group">
+                  <span>$</span>
+                  <input
+                    id="budget-input"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="3200"
+                    required
+                  />
+                </div>
+                <button type="submit" class="primary-btn">Update budget</button>
+              </form>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="panel-section">
+              <h3>Add an expense</h3>
+              <form id="expense-form" class="stacked-form">
+                <label for="expense-name">Expense name</label>
+                <input id="expense-name" type="text" placeholder="Groceries" maxlength="50" required />
+
+                <label for="expense-amount">Amount</label>
+                <div class="input-group">
+                  <span>$</span>
+                  <input
+                    id="expense-amount"
+                    type="number"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="125.50"
+                    required
+                  />
+                </div>
+
+                <label for="expense-category">Category</label>
+                <select id="expense-category" required>
+                  <option value="Food">Food</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Bills">Bills</option>
+                </select>
+
+                <button type="submit" class="primary-btn">Add expense</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="panel right-panel">
+            <div class="tracker-header">
+              <h3>Expense overview</h3>
+              <span id="progress-label" class="progress-label">0%</span>
+            </div>
+
+            <div class="progress-wrap" aria-label="Budget progress">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+
+            <div class="expense-list-header">
+              <h3>Recent expenses</h3>
+            </div>
+
+            <ul id="expense-list" class="expense-list" aria-live="polite"></ul>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
